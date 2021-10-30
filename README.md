@@ -20,3 +20,10 @@
 - Enter this in the fullstack-hub-system directory
   `git remote add upstream https://github.com/gen-Z-Codes/fullstack-hub-system.git`
 - With this you can make pulls to be up-to-date with the team's repo
+
+## DO THIS BEFORE YOU MAKE A PUSH TO THE TEAM'S REPO
+
+- `git fetch upstream`
+- `git merge upstream/main`
+- `git push origin main(or the branch you want to commit to)`
+  After that, make a pull request and let someone else merge it. This is to ensure that what we have done is not tampered with
