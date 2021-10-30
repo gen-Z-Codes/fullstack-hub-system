@@ -27,3 +27,9 @@
 - `git merge upstream/main`
 - `git push origin main(or the branch you want to commit to)`
   After that, make a pull request and let someone else merge it. This is to ensure that what we have done is not tampered with
+
+### Side Note
+
+- All **Frontend Code** should go into the client directory
+- All **Backend Code** the server directory
+- Lets not add anything to directories besides these.
