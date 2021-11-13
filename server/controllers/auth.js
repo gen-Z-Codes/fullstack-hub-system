@@ -1,7 +1,7 @@
 const User = require("../models/User");
 const { StatusCodes } = require("http-status-codes");
 
-const signup = async () => {
+const signup = async (req, res) => {
   const { fullName, email, username, password } = req.body;
 
   if (!fullName || !email || !username || !password) {
@@ -20,7 +20,7 @@ const signup = async () => {
   }
 };
 
-const login = async () => {
+const login = async (req, res) => {
   const { username, password } = req.body;
 
   // make sure [username/email] and password are provided
