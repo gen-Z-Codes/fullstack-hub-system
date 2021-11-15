@@ -27,27 +27,32 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, "Enter your password"],
-    minlength: 10,
+    minlength: [10, "Password should be at least 10 characters long"],
   },
 });
 
 // Hash password for security
 userSchema.pre("save", async function () {
   const salt = await bcrypt.genSalt(10);
-  this.password = bcrypt.hash(this.password, salt);
+  this.password = await bcrypt.hash(this.password, salt);
+  console.log(`Password: ${this.password}`);
 });
 
 // compare passwords on login, to ensure match
-userSchema.methods.comparePassword(candidatePassword) = async function() {
-    const isMatch = bcrypt.compare(candidatePassword, this.password)
-    return isMatch
-}
+userSchema.methods.comparePassword = async function (candidatePassword) {
+  const isMatch = await bcrypt.compare(candidatePassword, this.password);
+  return isMatch;
+};
 
 // Create json web token for user authentication
-userSchema.methods.createJWT = function() {
-    return jwt.sign({userId: this._id, username: this.username}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_LIFETIME})
-}
+userSchema.methods.createJWT = function () {
+  return jwt.sign(
+    { userId: this._id, username: this.username },
+    process.env.JWT_SECRET,
+    { expiresIn: process.env.JWT_LIFETIME }
+  );
+};
 
-const User = mongoose.model('User', userSchema)
+const User = mongoose.model("User", userSchema);
 
-module.exports = User
+module.exports = User;
