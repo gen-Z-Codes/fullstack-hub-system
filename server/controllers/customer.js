@@ -5,7 +5,7 @@ const { StatusCodes } = require("http-status-codes");
 const addCustomer = async (req, res) => {
   req.body.createdBy = req.user.userId;
   try {
-    const newCustomer = await Customer(req.body);
+    const newCustomer = await Customer.create({ ...req.body });
     res.status(StatusCodes.CREATED).json({ customer: { newCustomer } });
   } catch (error) {
     console.log(error);

@@ -10,6 +10,19 @@ const CustomerSchema = new Schema(
       type: String,
       required: [true, "Please provide customer's first name"],
     },
+    organization: {
+      type: String,
+      required: [true, "Please pprovide customer's organization"]
+    },
+    gender:{
+      type: String,
+      enum: ["Male", "Female", "Other"],
+      required: true,
+    },
+    date_of_birth:{
+      type: Date,
+      required: true,
+    },
     email: {
       type: String,
       required: [true, "Please provide your email"],
