@@ -2,34 +2,38 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const userSchema = new mongoose.Schema({
-  fullName: {
-    type: String,
-    required: [true, "Please provide your full name"],
-    maxlength: 50,
+const userSchema = new mongoose.Schema(
+  {
+    fullName: {
+      type: String,
+      required: [true, "Please provide your full name"],
+      maxlength: 50,
+      minlength: 10
+    },
+    //   User cannot create a new account a new account with the same email.
+    email: {
+      type: String,
+      required: [true, "Please provide your email"],
+      match: [
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        "Please provide valid email",
+      ],
+      unique: true,
+    },
+    username: {
+      type: String,
+      required: [true, "Please provide a unique username"],
+      unique: true,
+      minlength: 6,
+    },
+    password: {
+      type: String,
+      required: [true, "Enter your password"],
+      minlength: [10, "Password should be at least 10 characters long"],
+    },
   },
-  //   User cannot create a new account a new account with the same email.
-  email: {
-    type: String,
-    required: [true, "Please provide your email"],
-    match: [
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-      "Please provide valid email",
-    ],
-    unique: true,
-  },
-  username: {
-    type: String,
-    required: [true, "Please provide a unique username"],
-    unique: true,
-    minlength: 6,
-  },
-  password: {
-    type: String,
-    required: [true, "Enter your password"],
-    minlength: [10, "Password should be at least 10 characters long"],
-  },
-});
+  { timestamps: true }
+);
 
 // Hash password for security
 userSchema.pre("save", async function () {
