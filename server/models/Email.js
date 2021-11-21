@@ -1,3 +1,10 @@
+const email 
+
+// Sender
+// customer email
+// subject
+// body
+// attachment
 const {Schema, model} = require('mongoose');
 
 const emailSchema = new Schema(
@@ -24,4 +31,3 @@ const emailSchema = new Schema(
 );
 
 const Email = model("Email",emailSchema);
-

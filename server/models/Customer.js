@@ -12,14 +12,14 @@ const CustomerSchema = new Schema(
     },
     organization: {
       type: String,
-      required: [true, "Please pprovide customer's organization"]
+      required: [true, "Please pprovide customer's organization"],
     },
-    gender:{
+    gender: {
       type: String,
       enum: ["Male", "Female", "Other"],
       required: true,
     },
-    date_of_birth:{
+    date_of_birth: {
       type: Date,
       required: true,
     },
@@ -30,6 +30,7 @@ const CustomerSchema = new Schema(
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
         "Please provide valid email",
       ],
+      unique: true,
     },
     phoneNumber: {
       type: String,
