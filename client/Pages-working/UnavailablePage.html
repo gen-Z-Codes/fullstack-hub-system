@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>TheHub ❌</title>
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" />
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="./assets/fonts/font-awesome.min.css" />
+    <link rel="stylesheet" href="./assets/fonts/material-icons.min.css" type="text/css" />
+</head>
+
+<style>
+    body {
+        background-color: #1c8ef9 !important;
+        color: white;
+        font-size: 30px;
+    }
+    
+    .container1 {
+        width: 100%;
+        min-height: 300px;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* position the div in center */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .makebig{
+        font-size: 3em;
+        transform: rotate(-15deg);
+        margin: 0.2em;
+    }
+    
+    .brand{
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        align-items: center;
+        
+    }
+    
+    .brandText{
+        transform: none;
+        font-size: 3em;
+        font-weight: 800;
+        padding: 1.5rem 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05rem;
+    }
+    
+    
+
+    .loading {
+		-webkit-animation: jump 2s infinite linear;
+    }
+
+   @keyframes jump {
+    0% { transform: translate(10%, 10%) scale(1,1); }
+    50% { transform: translate(10, -50%) scale(1.25, 0.75); }
+    55% { transform: translate(10%, -50%) rotate(15deg); }
+    60% { transform: translate(10%, -50%) rotate(-15deg); }
+    65% { transform: translate(10%, -50%) rotate(15deg); }
+    70% { transform: translate(10%, -50%) rotate(-15deg); }
+    100% { transform: translate(10%, 10%) scale(1, 1); }
+
+</style>
+
+<body>
+    <div class="container1">
+        <div class="brand">
+            <span class="makebig fas fa-box-open loading"> </span>
+            <span class="brandText">THEHUB</span>
+        </div>
+        <div>
+            <p>You&#39;re early, page is  still cooking   🧱🕹</p>
+        </div>
+        
+    </div>
+</body>
