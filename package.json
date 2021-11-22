@@ -1,0 +1,21 @@
+{
+  "name": "fullstack-hub-system",
+  "version": "1.0.0",
+  "description": "- Click the fork section to for the repo into your remote github account.",
+  "main": "index.js",
+   "scripts": {
+    "heroku-prebuild": "cd client && npm install && npm run build && cd .. && cd server && npm install",
+    "start": "cd root && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gen-Z-Codes/fullstack-hub-system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gen-Z-Codes/fullstack-hub-system/issues"
+  },
+  "homepage": "https://github.com/gen-Z-Codes/fullstack-hub-system#readme"
+}
