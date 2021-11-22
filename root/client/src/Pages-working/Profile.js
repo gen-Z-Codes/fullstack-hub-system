@@ -1,8 +1,9 @@
-var NewComponent = React.createClass({
-  render: function() {
-    return (
-      <div>
-        <meta charSet="utf-8" />
+import React from 'react'
+
+export default function Profile() {
+  return (
+    <div>
+      <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
         <title>Profile - Brand</title>
         <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
@@ -453,7 +454,6 @@ var NewComponent = React.createClass({
           </div>
           <a className="border rounded d-inline scroll-to-top" href="#page-top"><i className="fas fa-angle-up" /></a>
         </div>
-      </div>
-    );
-  }
-});
+    </div>
+  )
+}

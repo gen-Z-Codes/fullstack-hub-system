@@ -1,8 +1,10 @@
-var NewComponent = React.createClass({
-  render: function() {
-    return (
-      <div>
-        <meta charSet="utf-8" />
+import React from 'react'
+
+export default function AddContact() {
+  return (
+    <div>
+
+       <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
         <title>Add Contact</title>
         <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
@@ -82,7 +84,8 @@ var NewComponent = React.createClass({
             </div>
           </div>
         </div>
-      </div>
-    );
-  }
-});
+      
+    </div>
+  )
+}
+
