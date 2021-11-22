@@ -5,7 +5,7 @@
   "main": "index.js",
    "scripts": {
     "heroku-prebuild": "cd root/client && npm install && npm run build && cd .. && cd server && npm install",
-    "start": "cd root && npm run dev"
+    "start": "cd root && npm install && npm run dev"
   },
   "repository": {
     "type": "git",

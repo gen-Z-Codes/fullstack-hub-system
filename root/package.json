@@ -33,7 +33,7 @@
     "yargs-parser": "^20.2.9"
   },
   "scripts": {
-    "dev": "concurrently  \"cd client && npm start\" \"cd server && npm run serve\"  ",
+    "dev": "concurrently  \"cd client && npm install && npm start\" \"cd server && npm install && npm run serve\"  ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
