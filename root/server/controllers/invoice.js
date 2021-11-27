@@ -4,10 +4,15 @@ const { StatusCodes } = require("http-status-codes");
 
 // Add an invoice - create an invoice
 const addInvoice = async (req, res) => {
+  req.body.createdBy = req.user.userId;
+  console.log(req.body);
+  console.log(req.body.customePhoneNumber);
   try {
     const validCustomer = await Customer.findOne({
-      phoneNumber: req.body.phoneNumber,
+      phoneNumber: req.body.customerPhoneNumber,
     });
+
+    console.log(validCustomer);
 
     if (!validCustomer) {
       res
@@ -35,42 +40,46 @@ const addInvoice = async (req, res) => {
 
 // get all invoices
 const getAllInvoice = async (req, res) => {
-  const invoices = await Invoice.find({ createdBy: req.user.userId }).sort(
-    "createdAt"
-  );
-  res
-    .status(StatusCodes.OK)
-    .json({ Invoices: invoices, count: invoices.length });
-};
+  if (Object.keys(req.query).length === 0) {
+    const invoices = await Invoice.find({ createdBy: req.user.userId }).sort(
+      "createdAt"
+    );
 
-// get all invoices according to criteria
+    res
+      .status(StatusCodes.OK)
+      .json({ Invoices: invoices, count: invoices.length });
+  } else {
+    if (req.query.id) {
+      const invoices = await Invoice.find({ createdBy: req.user.userId }).sort(
+        "createdAt"
+      );
+      // Get invoices with provided ids
+      const ids = req.query.id;
+      const result = [];
 
-// get invoices per id
-const getAllInvoicesById = async (req, res) => {
-  const {
-    user: { userId },
-    params: { ids: invoiceIds },
-  } = req;
-  const ids = invoiceIds.split("&");
-  let invoices = {};
-  ids.forEach((id) => {
-    const invoice = await Invoice.findById({ _id: id, createdBy: userId });
-    if (!invoice) {
-      throw new Error(`No invoice with id: ${invoiceId}.`);
+      ids.forEach((id) => {
+        for (let i = 0; i < invoices.length; i++) {
+          if (invoices[i]._id == id) {
+            result.push(invoices[i]);
+          }
+        }
+      });
+      res.status(StatusCodes.OK).json({ invoices: result });
+    } else if (req.query.dueDate) {
+      // Get invoices with provided due date
+      let dueDate = `${req.query.dueDate}T00:00:00.000Z`;
+
+      const dateInvoices = await Invoice.find({
+        dueDate: new Date(dueDate),
+        createdBy: req.user.userId,
+      });
+      if (!invoices) {
+        throw new Error(`No invoices with due date: ${dueDate}`);
+      }
+      res.status(StatusCodes.OK).json({ invoices: dateInvoices });
     }
-    invoices = { ...invoice };
-  });
-  if (!invoices) {
-    throw new Error(`No invoices exist with provided ids`);
   }
-  res.status(StatusCodes.OK).json({ invoices });
 };
-
-// get invoices per due date
-
-
-
-// get invoices per created date
 
 // get an invoice
 const getInvoice = async (req, res) => {
