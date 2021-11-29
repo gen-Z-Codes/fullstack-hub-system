@@ -7,7 +7,8 @@ require("dotenv").config();
 
 const userRoute = require("./routes/userRoutes");
 const customerRoute = require("./routes/customerRoutes");
-const authenticateUser = require('./middleware/authentication')
+const invoiceRoute = require("./routes/invoice");
+const authenticateUser = require("./middleware/authentication");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -18,6 +19,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/auth", userRoute);
 app.use("/api/v1/customers", authenticateUser, customerRoute);
+app.use("/api/v1/invoices", authenticateUser, invoiceRoute);
 
 // PORT for server
 const port = process.env.PORT || 8080;

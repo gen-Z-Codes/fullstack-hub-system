@@ -10,10 +10,6 @@ const {
 const customerRoute = express.Router();
 
 customerRoute.route("/").post(addCustomer).get(getAllCustomers);
-customerRoute
-  .route("/:id")
-  .get(getCustomer)
-  .patch(updateCustomer)
-  .delete(deleteCustomer);
+customerRoute.route("/:id").get(getCustomer).patch(updateCustomer).delete(deleteCustomer);
 
 module.exports = customerRoute;
