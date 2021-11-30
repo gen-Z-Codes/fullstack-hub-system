@@ -1,0 +1,14 @@
+.reports {
+    flex: 4;
+    padding: 20px;
+}
+
+.reportsTitleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pageIcon {
+    font-size: 200px !important;
+}
