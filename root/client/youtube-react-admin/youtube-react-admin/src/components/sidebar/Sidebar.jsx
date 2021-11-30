@@ -32,47 +32,66 @@ export default function Sidebar() {
           </ul>
         </div>
         <div className="sidebarMenu">
+
           <h3 className="sidebarTitle">Quick Menu</h3>
+
           <ul className="sidebarList">
+
             <Link to="/users" className="link">
               <li className="sidebarListItem">
                 <PermIdentity className="sidebarIcon" />
                 Customers
-                
-            
               </li>
             </Link>
+
             <Link to="/products" className="link">
               <li className="sidebarListItem">
                 <Storefront className="sidebarIcon" />
                 Invoice
               </li>
             </Link>
-            <li className="sidebarListItem">
-              <AttachMoney className="sidebarIcon" />
-              Transactions
-            </li>
-            <li className="sidebarListItem">
-              <BarChart className="sidebarIcon" />
-              Reports
-            </li>
+
+            <Link to = "/transactions" className="link">
+              <li className="sidebarListItem">
+                <AttachMoney className="sidebarIcon" />
+                Transactions
+              </li>
+            </Link>
+
+            <Link to = "/reports" className="link">
+              <li className="sidebarListItem">
+                  <BarChart className="sidebarIcon" />
+                  Reports
+              </li>
+            </Link>
           </ul>
         </div>
+
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Notifications</h3>
           <ul className="sidebarList">
-            <li className="sidebarListItem">
+
+        <Link to="/mail" className="link">
+          <li className="sidebarListItem">
               <MailOutline className="sidebarIcon" />
               Mail
-            </li>
+          </li>
+        </Link>
+
+        <Link to="/feedback" className="link">
+          <li className="sidebarListItem">
+                <DynamicFeed className="sidebarIcon" />
+                Feedback
+          </li>
+        </Link>
+
+          <Link to="/messages" className="link">
             <li className="sidebarListItem">
-              <DynamicFeed className="sidebarIcon" />
-              Feedback
-            </li>
-            <li className="sidebarListItem">
-              <ChatBubbleOutline className="sidebarIcon" />
-              Messages
-            </li>
+                <ChatBubbleOutline className="sidebarIcon" />
+                Messages
+              </li>
+          </Link>
+
           </ul>
         </div>
         

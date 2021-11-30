@@ -1,0 +1,14 @@
+.message {
+    flex: 4;
+    padding: 20px;
+}
+
+.messageTitleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pageIcon {
+    font-size: 200px !important;
+}
