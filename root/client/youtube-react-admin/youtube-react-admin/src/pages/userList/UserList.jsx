@@ -1,9 +1,10 @@
 import "./userList.css";
 import { DataGrid } from "@material-ui/data-grid";
-import { DeleteOutline } from "@material-ui/icons";
+import { DeleteOutline, AddOutlined, GroupAddOutlined, SendOutlined } from "@material-ui/icons";
 import { userRows } from "../../dummyData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+
 
 export default function UserList() {
   const [data, setData] = useState(userRows);
@@ -14,6 +15,7 @@ export default function UserList() {
   
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
+
     {
       field: "user",
       headerName: "User",
@@ -48,10 +50,10 @@ export default function UserList() {
             <Link to={"/user/" + params.row.id}>
               <button className="userListEdit">Edit</button>
             </Link>
-            <DeleteOutline
+            {/* <DeleteOutline
               className="userListDelete"
               onClick={() => handleDelete(params.row.id)}
-            />
+            /> */}
           </>
         );
       },
@@ -65,16 +67,30 @@ export default function UserList() {
     <div className="userList">
       <div>
         <div className="customerlistbuttons">
-          <Link to="/newUser">
-            <button className="userAddButton">Create</button>
-          </Link>
-        </div>
-        <div>
-          <Link to="/newUser"> 
-            <button className="userAddButton userListDelete">Delete</button>
-          </Link>
-          
-        </div>
+            <Link to="/newUser">
+              <button className="userButton">Add New 
+              <AddOutlined className="buttonIcon"/>
+              </button>
+            </Link>
+
+            <button className="userButton groupButton">Group
+              <GroupAddOutlined className="buttonIcon"/>
+                {/* onClick={() => handleDelete(params.row.id)} */}
+              </button>
+        
+        
+              <button className="userButton deleteButton">Delete
+              <DeleteOutline className="buttonIcon"/>
+                {/* onClick={() => handleDelete(params.row.id)} */}
+              </button>
+
+              <button className="userButton sendMesaageButton">Send Message
+              <SendOutlined className="buttonIcon"/>
+                {/* onClick={() => handleDelete(params.row.id)} */}
+              </button>
+  
+       
+          </div>
 
       </div>
       <DataGrid
